@@ -1,0 +1,1 @@
+注意：需将global.h中的GENSPF_NUM设为16

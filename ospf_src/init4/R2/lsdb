@@ -1,0 +1,76 @@
+=====area: 0====
+[1]
+	ls_type:router lsa
+	bornTime:1341189693
+	seqNum:50529027
+	bornRouterId:3.3.3.3
+	ls_id:3.3.3.3
+**
+	link_id:2.2.2.2
+	link_data:20.1.1.1
+	link_type:PTP
+	link_tos_count:0
+	tos_metric:500
+---------------
+
+
+[2]
+	ls_type:router lsa
+	bornTime:1341189693
+	seqNum:50529028
+	bornRouterId:3.3.3.3
+	ls_id:3.3.3.3
+**
+	link_id:20.1.1.0
+	link_data:255.255.255.0
+	link_type:STUB
+	link_tos_count:0
+	tos_metric:500
+---------------
+
+
+[3]
+	ls_type:router lsa
+	bornTime:1341189700
+	seqNum:50529029
+	bornRouterId:3.3.3.3
+	ls_id:3.3.3.3
+**
+	link_id:10.1.1.1
+	link_data:10.1.1.1
+	link_type:TRANS
+	link_tos_count:0
+	tos_metric:300
+---------------
+
+
+[4]
+	ls_type:router lsa
+	bornTime:1341189700
+	seqNum:50529030
+	bornRouterId:3.3.3.3
+	ls_id:3.3.3.3
+**
+	link_id:20.1.1.2
+	link_data:20.1.1.1
+	link_type:TRANS
+	link_tos_count:0
+	tos_metric:500
+---------------
+
+
+[5]
+	ls_type:router lsa
+	bornTime:1341189700
+	seqNum:50529031
+	bornRouterId:3.3.3.3
+	ls_id:3.3.3.3
+**
+	link_id:30.1.1.1
+	link_data:30.1.1.1
+	link_type:TRANS
+	link_tos_count:0
+	tos_metric:200
+---------------
+
+

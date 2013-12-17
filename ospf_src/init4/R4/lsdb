@@ -1,0 +1,16 @@
+=====area: 0====
+[1]
+	ls_type:router lsa
+	bornTime:1341189713
+	seqNum:67372036
+	bornRouterId:4.4.4.4
+	ls_id:4.4.4.4
+**
+	link_id:10.1.1.2
+	link_data:10.1.1.2
+	link_type:TRANS
+	link_tos_count:191
+	tos_metric:300
+---------------
+
+

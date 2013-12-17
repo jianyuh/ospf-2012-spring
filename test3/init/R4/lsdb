@@ -1,0 +1,257 @@
+=====area: 0====
+[1]
+	ls_type:router lsa
+	bornTime:1341158674
+	seqNum:67372036
+	bornRouterId:4.4.4.4
+	ls_id:4.4.4.4
+**
+	link_id:10.1.1.1
+	link_data:10.1.1.2
+	link_type:TRANS
+	link_tos_count:0
+	tos_metric:300
+---------------
+
+
+[2]
+	ls_type:network lsa
+	bornTime:30018
+	seqNum:50529034
+	bornRouterId:3.3.3.3
+	ls_id:30.1.1.1
+**
+	mask:255.255.255.0
+	router:3.3.3.3
+	router:1.1.1.1
+---------------
+
+
+[3]
+	ls_type:network lsa
+	bornTime:30018
+	seqNum:50529032
+	bornRouterId:3.3.3.3
+	ls_id:10.1.1.1
+**
+	mask:255.255.255.0
+	router:3.3.3.3
+	router:4.4.4.4
+---------------
+
+
+[4]
+	ls_type:network lsa
+	bornTime:29993
+	seqNum:16843011
+	bornRouterId:1.1.1.1
+	ls_id:30.1.1.2
+**
+	mask:255.255.255.0
+	router:1.1.1.1
+	router:3.3.3.3
+---------------
+
+
+[5]
+	ls_type:router lsa
+	bornTime:29969
+	seqNum:16843009
+	bornRouterId:1.1.1.1
+	ls_id:1.1.1.1
+**
+	link_id:30.1.1.2
+	link_data:30.1.1.2
+	link_type:TRANS
+	link_tos_count:0
+	tos_metric:200
+---------------
+
+
+[6]
+	ls_type:router lsa
+	bornTime:29958
+	seqNum:33686018
+	bornRouterId:2.2.2.2
+	ls_id:2.2.2.2
+**
+	link_id:3.3.3.3
+	link_data:20.1.1.2
+	link_type:PTP
+	link_tos_count:0
+	tos_metric:500
+---------------
+
+
+[7]
+	ls_type:router lsa
+	bornTime:29969
+	seqNum:16843010
+	bornRouterId:1.1.1.1
+	ls_id:1.1.1.1
+**
+	link_id:40.1.1.1
+	link_data:40.1.1.1
+	link_type:TRANS
+	link_tos_count:0
+	tos_metric:100
+---------------
+
+
+[8]
+	ls_type:router lsa
+	bornTime:29958
+	seqNum:33686019
+	bornRouterId:2.2.2.2
+	ls_id:2.2.2.2
+**
+	link_id:20.1.1.0
+	link_data:255.255.255.0
+	link_type:STUB
+	link_tos_count:0
+	tos_metric:500
+---------------
+
+
+[9]
+	ls_type:router lsa
+	bornTime:29969
+	seqNum:33686020
+	bornRouterId:2.2.2.2
+	ls_id:2.2.2.2
+**
+	link_id:20.1.1.2
+	link_data:20.1.1.2
+	link_type:TRANS
+	link_tos_count:178
+	tos_metric:500
+---------------
+
+
+[10]
+	ls_type:router lsa
+	bornTime:29969
+	seqNum:33686021
+	bornRouterId:2.2.2.2
+	ls_id:2.2.2.2
+**
+	link_id:40.1.1.1
+	link_data:40.1.1.2
+	link_type:TRANS
+	link_tos_count:0
+	tos_metric:100
+---------------
+
+
+[11]
+	ls_type:network lsa
+	bornTime:29993
+	seqNum:16843012
+	bornRouterId:1.1.1.1
+	ls_id:40.1.1.1
+**
+	mask:255.255.255.0
+	router:1.1.1.1
+---------------
+
+
+[12]
+	ls_type:network lsa
+	bornTime:30018
+	seqNum:33686022
+	bornRouterId:2.2.2.2
+	ls_id:20.1.1.2
+**
+	mask:255.255.255.0
+	router:2.2.2.2
+	router:3.3.3.3
+---------------
+
+
+[13]
+	ls_type:router lsa
+	bornTime:29960
+	seqNum:50529027
+	bornRouterId:3.3.3.3
+	ls_id:3.3.3.3
+**
+	link_id:2.2.2.2
+	link_data:20.1.1.1
+	link_type:PTP
+	link_tos_count:0
+	tos_metric:500
+---------------
+
+
+[14]
+	ls_type:router lsa
+	bornTime:29960
+	seqNum:50529028
+	bornRouterId:3.3.3.3
+	ls_id:3.3.3.3
+**
+	link_id:20.1.1.0
+	link_data:255.255.255.0
+	link_type:STUB
+	link_tos_count:0
+	tos_metric:500
+---------------
+
+
+[15]
+	ls_type:router lsa
+	bornTime:29969
+	seqNum:50529029
+	bornRouterId:3.3.3.3
+	ls_id:3.3.3.3
+**
+	link_id:10.1.1.1
+	link_data:10.1.1.1
+	link_type:TRANS
+	link_tos_count:0
+	tos_metric:300
+---------------
+
+
+[16]
+	ls_type:router lsa
+	bornTime:29969
+	seqNum:50529030
+	bornRouterId:3.3.3.3
+	ls_id:3.3.3.3
+**
+	link_id:20.1.1.1
+	link_data:20.1.1.1
+	link_type:TRANS
+	link_tos_count:0
+	tos_metric:500
+---------------
+
+
+[17]
+	ls_type:router lsa
+	bornTime:29969
+	seqNum:50529031
+	bornRouterId:3.3.3.3
+	ls_id:3.3.3.3
+**
+	link_id:30.1.1.1
+	link_data:30.1.1.1
+	link_type:TRANS
+	link_tos_count:0
+	tos_metric:200
+---------------
+
+
+[18]
+	ls_type:network lsa
+	bornTime:30018
+	seqNum:50529033
+	bornRouterId:3.3.3.3
+	ls_id:20.1.1.1
+**
+	mask:255.255.255.0
+	router:3.3.3.3
+---------------
+
+

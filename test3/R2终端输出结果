@@ -1,0 +1,2415 @@
+BEGIN:SETTING............................
+Now Router is: R2
+router ID: 3.3.3.3
+AREA ID: 0
+3 interfaces
+30.1.1.1-255.255.255.0
+cost: 200
+NIC: eth1
+20.1.1.1-255.255.255.0
+cost: 500
+NIC: eth1
+10.1.1.1-255.255.255.0
+cost: 300
+NIC: eth1
+END:SETTING...........................
+BEGIN: CONNECT.......................
+40.1.1.1-40.1.1.2
+30.1.1.1-30.1.1.2
+20.1.1.1-20.1.1.2
+10.1.1.1-10.1.1.2
+END:CONNECT.........................
+generate initial LSA............................
+	init lsa metric: 500
+	init lsa metric: 500
+End:generate lsas
+SEND 68 BYTE OSPF HELLO PACKET................
+Listening DR...................................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+END:Listening DR...............................
+[GENERATE LSDB.....................]
+10.1.1.1's DR: 10.1.1.1
+	lsa metric: 300
+20.1.1.1's DR: 20.1.1.1
+	lsa metric: 500
+30.1.1.1's DR: 30.1.1.1
+	lsa metric: 200
+30.1.1.1 seen 1.1.1.1
+SEND 68 BYTE OSPF HELLO SEEN PACKET....................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO SEEN PACKET....................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND DD: 30.1.1.1->30.1.1.2
+SEND 52 BYTE OSPF DD PACKET....................
+10.1.1.1 seen 4.4.4.4
+SEND 68 BYTE OSPF HELLO SEEN PACKET....................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+[GENERATE LSDB.....................]
+flooding a network lsa
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 68 BYTE OSPF HELLO SEEN PACKET....................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND DD: 10.1.1.1->10.1.1.2
+SEND 52 BYTE OSPF DD PACKET....................
+20.1.1.1 seen 2.2.2.2
+SEND 68 BYTE OSPF HELLO SEEN PACKET....................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+[GENERATE LSDB.....................]
+
+DD wait: send a first DD again
+
+SEND 52 BYTE OSPF DD PACKET....................
+flooding a network lsa
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+flooding a network lsa
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 68 BYTE OSPF HELLO SEEN PACKET....................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND DD: 20.1.1.1->20.1.1.2
+SEND 52 BYTE OSPF DD PACKET....................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 32
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+RECV FIRST DD
+the Master1: 3.3.3.3
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 32
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+RECV FIRST DD
+the Master2: 4.4.4.4
+Exchange a DD packet..................
+SEND ONE MORE DD..................
+SEND 72 BYTE OSPF DD PACKET....................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 3.1.1.1
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 20.1.1.2 -> 20.1.1.1
+OSPFv2 - TYPE: DD, len: 32
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-20.1.1.2
+NBR BELONG: 20.1.1.2-20.1.1.2
+RECV FIRST DD
+the Master1: 3.3.3.3
+NBR BELONG: 30.1.1.2-20.1.1.2
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 3.1.1.1
+network lsu flooding?: 32-32
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 1.1.1.1
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 2.2.2.2
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 2.1.1.1
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 3.2.2.2
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 4.2.2.2
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 5.2.2.2
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 4.1.1.1
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 6.2.2.2
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529027
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529028
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529029
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529030
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529031
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529027
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529028
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529029
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529030
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529031
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529027
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529028
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529029
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529030
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529031
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 4.4.4.4
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529027
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529028
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529029
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529030
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529031
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 50529027
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 50529027
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 50529027
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 50529027
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 50529027
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529027
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529028
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529029
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529030
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529031
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 10.3.3.3
+network lsu flooding?: 32-32
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 811935232: ACK 0
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 811935232: ACK 0
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 811935232: ACK 0
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 811935232: ACK 0
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 811935232: ACK 0
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529027
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529028
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529029
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529030
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529031
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 3.1.1.1
+network lsu flooding?: 32-32
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 33620254
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 33620254
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 33620254
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 33620254
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 33620254
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529027
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529028
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529029
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529030
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529031
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 8.3.3.3
+network lsu flooding?: 32-32
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843018
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843018
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843018
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843018
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843018
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529027
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529028
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529029
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529030
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529031
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 4.1.1.1
+network lsu flooding?: 28-28
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 16843048
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 16843048
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 16843048
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 16843048
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529027
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529028
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529029
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529030
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529031
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 16843048
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 3.1.1.1
+network lsu flooding?: 32-32
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 33620254
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 33620254
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 33620254
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 33620254
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 33620254
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529027
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529028
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529029
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529030
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529031
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 10.3.3.3
+network lsu flooding?: 32-32
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843038
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843038
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843038
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843038
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843038
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529032
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 16843009
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 16843009
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 16843009
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 16843009
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 16843009
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529032
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 33686018
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 33686018
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 33686018
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529033
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 33686018
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 33686018
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 167837953
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529033
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 167837953
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 50529034
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 335610113
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 50529034
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 16843011
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 335610113
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 9.3.3.3
+network lsu flooding?: 28-28
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 16843011
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 503382273
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 50529027: ACK 503382273
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 16843009
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 16843010
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 16843009
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 16843010
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 16843009: ACK 503382274
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 6.2.2.2
+network lsu flooding?: 28-32
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 16843009: ACK 503382274
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686018
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686019
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686020
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686021
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 33686018
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 33686018
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686018
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686019
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686020
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686021
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 8.3.3.3
+network lsu flooding?: 32-32
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843018
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843018
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 16843009
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 16843010
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 4.1.1.1
+network lsu flooding?: 28-28
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 16843048
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 16843048
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 16843048
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1965621250: ACK 16843048
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 16843009
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 16843010
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686018
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686019
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686020
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686021
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 6.2.2.2
+network lsu flooding?: 32-32
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 33620244
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 33620244
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686018
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686019
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686020
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686021
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686018
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686019
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686020
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686021
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686018
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686019
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686020
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686021
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686018
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686019
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686020
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686021
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686018
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686019
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686020
+SEND 92 BYTE OSPF LSU PACKET.................
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686021
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 16843012
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 16843012
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1964048385: ACK 50529027
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 33686022
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 16843009: ACK 671154433
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+SEND 72 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 33686022
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 16843009: ACK 671154433
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: DD, len: 52
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-10.1.1.2
+SEND 52 BYTE OSPF DD PACKET....................
+SEND 56 BYTE OSPF LSR PACKET.................
+NBR BELONG: 20.1.1.2-10.1.1.2
+NBR BELONG: 30.1.1.2-10.1.1.2
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 10.1.1.1->10.1.1.2, 67372036
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: DD, len: 32
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV  DB DESCRIPTION....................
+NBR BELONG: 10.1.1.2-30.1.1.2
+NBR BELONG: 20.1.1.2-30.1.1.2
+NBR BELONG: 30.1.1.2-30.1.1.2
+LAST DD
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 33686018: ACK 335610114
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSR, len: 36
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+LSR IN AREA 0
+find one lsa(lsr repley)
+LSU: 30.1.1.1->30.1.1.2, 67372036
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 30.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 9.3.3.3
+network lsu flooding?: 28-28
+SEND LSACK TO 30.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 33686018: ACK 335610114
+RECV OSPF PKT: 10.1.1.2 -> 10.1.1.1
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 9.3.3.3
+network lsu flooding?: 28-28
+SEND LSACK TO 10.1.1.2
+SEND 64 BYTE OSPF LSACK PACKET.................
+
+RECV OSPF PKT: 10.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 4.4.4.4
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1967259650: ACK 16843028
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSAck, len: 44
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+RECV LSAck FROM 1885677056: ACK 0
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+SEND 68 BYTE OSPF HELLO PACKET................
+RECV OSPF PKT: 20.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 2.2.2.2
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 6.2.2.2
+network lsu flooding?: 32-32
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 3.1.1.1
+network lsu flooding?: 32-32
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 4.1.1.1
+network lsu flooding?: 28-32
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+[GENERATE LSDB.....................]
+flooding a network lsa
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+flooding a network lsa
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+RECV OSPF PKT: 30.1.1.2 -> 224.0.0.5
+OSPFv2 - TYPE: LSU, len: 72
+	Router ID: 1.1.1.1
+	Area ID: 0.0.0.0
+NEW LSA SEQ: 9.3.3.3
+network lsu flooding?: 32-32
+SEND 92 BYTE OSPF LSU PACKET.................
+flooding a network lsa
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+SEND 92 BYTE OSPF LSU PACKET.................
+BEGIN:generate spf tree..........................
+Node 0(router):2.2.2.2
+
+Node 1(router):3.3.3.3
+
+B.add vertex1: 2.2.2.2
+B.add vertex1: 3.3.3.3
+Node 2(stub):20.1.1.0
+
+C.add vertex2: 20.1.1.0
+A.add vertex1: 3.3.3.3
+N
